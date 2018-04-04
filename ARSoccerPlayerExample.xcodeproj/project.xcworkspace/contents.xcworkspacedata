@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:WeightGraphExample.xcodeproj">
+      location = "self:/Users/yusuf.soomro/Desktop/WeightGraphExample/ARSoccerPlayerExample.xcodeproj">
    </FileRef>
 </Workspace>

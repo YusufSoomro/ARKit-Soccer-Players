@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8E527B3D2075711B0003A472 /* WeightGraphExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeightGraphExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E527B3D2075711B0003A472 /* ARSoccerPlayerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARSoccerPlayerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E527B402075711B0003A472 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E527B422075711B0003A472 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		8E527B442075711B0003A472 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -42,7 +42,7 @@
 		8E527B342075711B0003A472 = {
 			isa = PBXGroup;
 			children = (
-				8E527B3F2075711B0003A472 /* WeightGraphExample */,
+				8E527B3F2075711B0003A472 /* ARSoccerPlayerExample */,
 				8E527B3E2075711B0003A472 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,12 +50,12 @@
 		8E527B3E2075711B0003A472 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8E527B3D2075711B0003A472 /* WeightGraphExample.app */,
+				8E527B3D2075711B0003A472 /* ARSoccerPlayerExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8E527B3F2075711B0003A472 /* WeightGraphExample */ = {
+		8E527B3F2075711B0003A472 /* ARSoccerPlayerExample */ = {
 			isa = PBXGroup;
 			children = (
 				8E527B402075711B0003A472 /* AppDelegate.swift */,
@@ -67,15 +67,15 @@
 				8E527B4B2075711B0003A472 /* LaunchScreen.storyboard */,
 				8E527B4E2075711B0003A472 /* Info.plist */,
 			);
-			path = WeightGraphExample;
+			path = ARSoccerPlayerExample;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8E527B3C2075711B0003A472 /* WeightGraphExample */ = {
+		8E527B3C2075711B0003A472 /* ARSoccerPlayerExample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8E527B512075711B0003A472 /* Build configuration list for PBXNativeTarget "WeightGraphExample" */;
+			buildConfigurationList = 8E527B512075711B0003A472 /* Build configuration list for PBXNativeTarget "ARSoccerPlayerExample" */;
 			buildPhases = (
 				8E527B392075711B0003A472 /* Sources */,
 				8E527B3A2075711B0003A472 /* Frameworks */,
@@ -85,9 +85,9 @@
 			);
 			dependencies = (
 			);
-			name = WeightGraphExample;
+			name = ARSoccerPlayerExample;
 			productName = WeightGraphExample;
-			productReference = 8E527B3D2075711B0003A472 /* WeightGraphExample.app */;
+			productReference = 8E527B3D2075711B0003A472 /* ARSoccerPlayerExample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -106,7 +106,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8E527B382075711B0003A472 /* Build configuration list for PBXProject "WeightGraphExample" */;
+			buildConfigurationList = 8E527B382075711B0003A472 /* Build configuration list for PBXProject "ARSoccerPlayerExample" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -119,7 +119,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8E527B3C2075711B0003A472 /* WeightGraphExample */,
+				8E527B3C2075711B0003A472 /* ARSoccerPlayerExample */,
 			);
 		};
 /* End PBXProject section */
@@ -311,7 +311,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8E527B382075711B0003A472 /* Build configuration list for PBXProject "WeightGraphExample" */ = {
+		8E527B382075711B0003A472 /* Build configuration list for PBXProject "ARSoccerPlayerExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8E527B4F2075711B0003A472 /* Debug */,
@@ -320,7 +320,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8E527B512075711B0003A472 /* Build configuration list for PBXNativeTarget "WeightGraphExample" */ = {
+		8E527B512075711B0003A472 /* Build configuration list for PBXNativeTarget "ARSoccerPlayerExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8E527B522075711B0003A472 /* Debug */,
