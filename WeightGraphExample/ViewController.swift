@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  WeightGraphExample
-//
-//  Created by Yusuf Soomro on 4/4/18.
-//  Copyright © 2018 Yusuf Soomro. All rights reserved.
-//
-
 import UIKit
 import SceneKit
 import ARKit
@@ -13,68 +5,89 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+    var ballNode = SCNNode()
+    var anchors: [ARAnchor] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set the view's delegate
         sceneView.delegate = self
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         
-        // Create a new scene
         let scene = SCNScene(named: "art.scnassets/ship.scn")!
-        
-        // Set the scene to the view
         sceneView.scene = scene
+        
+        ballNode = make2dNode(image: #imageLiteral(resourceName: "soccer-ball"))
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
-
-        // Run the view's session
         sceneView.session.run(configuration)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        // Pause the view's session
         sceneView.session.pause()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
+    }
+    
+    private func make2dNode(image: UIImage, width: CGFloat = 0.1, height: CGFloat = 0.1) -> SCNNode {
+        let plane = SCNPlane(width: width, height: height)
+        plane.firstMaterial!.diffuse.contents = image
+        let node = SCNNode(geometry: plane)
+        node.constraints = [SCNBillboardConstraint()]
+        return node
+    }
+    
+    private func startBouncing() {
+        guard let first = anchors.first, let start = sceneView.node(for: first),
+            let last = anchors.last, let end = sceneView.node(for: last)
+            else {
+                return
+        }
+        
+        if ballNode.parent == nil {
+            sceneView.scene.rootNode.addChildNode(ballNode)
+        }
+        
+        let animation = CABasicAnimation(keyPath: #keyPath(SCNNode.transform))
+        animation.fromValue = start.transform
+        animation.toValue = end.transform
+        animation.duration = 1
+        animation.autoreverses = true
+        animation.repeatCount = .infinity
+        ballNode.removeAllAnimations()
+        ballNode.addAnimation(animation, forKey: nil)
     }
 
     // MARK: - ARSCNViewDelegate
     
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
-    }
-*/
-    
-    func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
-        
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        let player = make2dNode(image: #imageLiteral(resourceName: "cartoon-soccer-player-edited"))
+        node.addChildNode(player)
     }
     
-    func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if anchors.count > 1 {
+            startBouncing()
+            return
+        }
         
-    }
-    
-    func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
+        if let currentFrame = sceneView.session.currentFrame {
+            var translation = matrix_identity_float4x4
+            translation.columns.3.z = -0.3
+            let transform = simd_mul(currentFrame.camera.transform, translation)
+            
+            let anchor = ARAnchor(transform: transform)
+            sceneView.session.add(anchor: anchor)
+            anchors.append(anchor)
+        }
     }
 }
